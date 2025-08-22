@@ -1,7 +1,5 @@
 // Debug: ver qué exporta la librería jsPDF
 console.log("window.jspdf:", window.jspdf);
-console.log("window.jspPDF:", window.jspPDF);
-console.log("window.jsPDF:", window.jsPDF);
 
 const fileInput = document.getElementById("fileInput");
 const convertBtn = document.getElementById("convertBtn");
@@ -22,11 +20,11 @@ convertBtn.addEventListener("click", () => {
 });
 
 function generarPDF(texto) {
-  // Cubre todas las variantes posibles según cómo cargue la librería
-  const { jsPDF } = window.jspdf || window.jspPDF || window;
+  // En la versión UMD se expone como window.jspdf.jsPDF
+  const jsPDF = window.jspdf ? window.jspdf.jsPDF : null;
 
   if (!jsPDF) {
-    console.error("❌ No se pudo encontrar jsPDF en window.");
+    console.error("❌ No se encontró jsPDF en window.jspdf");
     alert("Error: jsPDF no está cargado.");
     return;
   }
@@ -48,4 +46,5 @@ function generarPDF(texto) {
 
   doc.save("documento.pdf");
 }
+
 
