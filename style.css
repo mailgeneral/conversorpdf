@@ -1,61 +1,74 @@
-/* style.css */
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+/* BODY */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f9;
-  color: #333;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  margin: 0;
+  align-items: center;
+  color: #333;
+  padding: 20px;
 }
 
+/* TÍTULO */
 h1 {
-  font-size: 2rem;
-  color: #222;
-  margin-bottom: 1.5rem;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #1a1a1a;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
 }
 
+/* INPUT DE ARCHIVO */
 input[type="file"] {
-  padding: 0.6rem;
-  border: 2px dashed #bbb;
+  padding: 10px 15px;
+  font-size: 1rem;
   border-radius: 8px;
-  background: white;
-  margin-bottom: 1rem;
+  border: 1px solid #999;
+  margin-bottom: 20px;
   cursor: pointer;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 input[type="file"]:hover {
-  border-color: #007bff;
+  border-color: #666;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+/* BOTÓN */
 button {
-  padding: 0.7rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #007bff;
+  background-color: #4a90e2;
   color: white;
-  font-size: 1rem;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+  background-color: #357abd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-button:active {
-  transform: scale(0.97);
-}
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2rem;
+  }
 
-.container {
-  text-align: center;
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  button, input[type="file"] {
+    width: 100%;
+  }
 }
