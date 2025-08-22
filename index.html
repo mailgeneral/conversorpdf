@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TXT a PDF Converter</title>
-   <link rel="stylesheet" href="style.css">
+  <title>Convertidor a PDF</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
 </head>
 <body>
-  <h1>Convertir TXT a PDF</h1>
-  <input type="file" id="fileInput" accept=".txt,.doc,.docx">
-  <button id="convertBtn">Convertir a PDF</button>
+  <div class="container">
+    <h1>Convertir TXT / DOCX a PDF</h1>
+    <input type="file" id="fileInput" accept=".txt,.docx">
+    <button id="convertBtn">Convertir a PDF</button>
+  </div>
 
-  <!-- Librería jsPDF desde CDN (debe ir antes de tu script.js) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-  <!-- Tu script -->
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
