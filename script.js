@@ -27,7 +27,9 @@ convertBtn.addEventListener('click', () => {
 });
 
 function generarPDF(texto) {
-    const doc = new window.jspdf.jsPDF();
+    // jsPDF está en window.jspPDF
+    const doc = new window.jspPDF();
+
     const lineHeight = 10;
     const lines = doc.splitTextToSize(texto, 180);
     let y = 20;
