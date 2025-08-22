@@ -1,48 +1,51 @@
-const fileInput = document.getElementById('fileInput');
-const convertBtn = document.getElementById('convertBtn');
+// Debug: ver qué exporta la librería jsPDF
+console.log("window.jspdf:", window.jspdf);
+console.log("window.jspPDF:", window.jspPDF);
+console.log("window.jsPDF:", window.jsPDF);
 
-convertBtn.addEventListener('click', () => {
-    const file = fileInput.files[0];
-    if (!file) return alert("Selecciona un archivo TXT o DOCX");
+const fileInput = document.getElementById("fileInput");
+const convertBtn = document.getElementById("convertBtn");
 
-    const reader = new FileReader();
-    
-    if (file.name.endsWith(".txt")) {
-        reader.onload = () => {
-            generarPDF(reader.result);
-        };
-        reader.readAsText(file);
-    } else if (file.name.endsWith(".docx")) {
-        reader.onload = (e) => {
-            const content = e.target.result;
-            const zip = new JSZip(content);
-            const doc = new window.docxtemplater(zip, { paragraphLoop: true, linebreaks: true });
-            const text = doc.getFullText();
-            generarPDF(text);
-        };
-        reader.readAsArrayBuffer(file);
-    } else {
-        alert("Formato no soportado");
-    }
+convertBtn.addEventListener("click", () => {
+  const file = fileInput.files[0];
+  if (!file) {
+    alert("Por favor selecciona un archivo primero.");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const text = e.target.result;
+    generarPDF(text);
+  };
+  reader.readAsText(file);
 });
 
 function generarPDF(texto) {
-    // Usamos directamente la clase jsPDF expuesta en window
-    const doc = new window.jspPDF.jsPDF();
+  // Cubre todas las variantes posibles según cómo cargue la librería
+  const { jsPDF } = window.jspdf || window.jspPDF || window;
 
-    const lineHeight = 10;
-    const lines = doc.splitTextToSize(texto, 180);
-    let y = 20;
+  if (!jsPDF) {
+    console.error("❌ No se pudo encontrar jsPDF en window.");
+    alert("Error: jsPDF no está cargado.");
+    return;
+  }
 
-    lines.forEach(line => {
-        if (y > 280) {
-            doc.addPage();
-            y = 20;
-        }
-        doc.text(line, 15, y);
-        y += lineHeight;
-    });
+  const doc = new jsPDF();
 
-    doc.save("documento.pdf");
+  const lineHeight = 10;
+  const lines = doc.splitTextToSize(texto, 180);
+  let y = 20;
+
+  lines.forEach(line => {
+    if (y > 280) {
+      doc.addPage();
+      y = 20;
+    }
+    doc.text(line, 15, y);
+    y += lineHeight;
+  });
+
+  doc.save("documento.pdf");
 }
 
