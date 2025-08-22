@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertidor Word/TXT a PDF</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXT a PDF Converter</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Convertidor a PDF</h1>
-        <input type="file" id="fileInput" accept=".txt,.docx">
-        <button id="convertBtn">Convertir a PDF</button>
-    </div>
+  <h1>Convertir TXT a PDF</h1>
+  <input type="file" id="fileInput" accept=".txt,.doc,.docx">
+  <button id="convertBtn">Convertir a PDF</button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.29.0/docxtemplater.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPDF/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
+  <!-- Librería jsPDF desde CDN (debe ir antes de tu script.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Tu script -->
+  <script src="script.js"></script>
 </body>
 </html>
+
+
