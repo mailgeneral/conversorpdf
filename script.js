@@ -27,8 +27,8 @@ convertBtn.addEventListener('click', () => {
 });
 
 function generarPDF(texto) {
-    // jsPDF está en window.jspPDF
-    const doc = new window.jspPDF();
+    // Usamos directamente la clase jsPDF expuesta en window
+    const doc = new window.jspPDF.jsPDF();
 
     const lineHeight = 10;
     const lines = doc.splitTextToSize(texto, 180);
@@ -45,3 +45,4 @@ function generarPDF(texto) {
 
     doc.save("documento.pdf");
 }
+
